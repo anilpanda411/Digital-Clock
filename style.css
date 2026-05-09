@@ -1,0 +1,402 @@
+/* =========================================
+   UNIVERSAL RESET
+   Applies to ALL elements on page
+========================================= */
+* {
+
+    /* Removes default outside spacing
+       Browsers add default margins automatically
+       This resets everything cleanly */
+    margin: 0;
+
+    /* Removes default inner spacing */
+    padding: 0;
+
+    /* Makes width calculations predictable
+       
+       Without border-box:
+       width = content + padding + border
+
+       With border-box:
+       width includes everything
+    */
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   ROOT VARIABLES
+   DARK MODE DEFAULT THEME
+========================================= */
+:root {
+
+    /* Background gradient color 1
+       Deep dark blue */
+    --bg1: #1a1b26;
+
+    /* Background gradient color 2
+       Slightly lighter navy */
+    --bg2: #24283b;
+
+    /* Background gradient color 3
+       Blue-gray tone */
+    --bg3: #2e3440;
+
+    /* Background gradient color 4
+       Very dark black-blue */
+    --bg4: #16161e;
+
+    /* Main clock text color
+       Soft blue to reduce eye strain */
+    --text-color: #7aa2f7;
+
+    /* Date text color
+       Slightly softer than main text */
+    --date-color: #c0caf5;
+
+    /* Semi-transparent glass effect */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+
+    /* Main glow color */
+    --glow-color: #7aa2f7;
+}
+
+
+/* =========================================
+   LIGHT MODE VARIABLES
+   Overrides root variables when
+   light-mode class is active
+========================================= */
+.light-mode {
+
+    /* Soft light gradient colors */
+    --bg1: #f5f7fa;
+    --bg2: #dfe9f3;
+    --bg3: #e4ecf7;
+    --bg4: #ffffff;
+
+    /* Dark text for readability */
+    --text-color: #2b2d42;
+
+    /* Slightly lighter secondary text */
+    --date-color: #555b6e;
+
+    /* More visible glass effect */
+    --glass-bg: rgba(255, 255, 255, 0.6);
+
+    /* Softer glow for light theme */
+    --glow-color: #7aa2f7;
+}
+
+
+/* =========================================
+   BODY
+   Main page container
+========================================= */
+body {
+
+    /* Enables Flexbox layout system */
+    display: flex;
+
+    /* Stack items vertically */
+    flex-direction: column;
+
+    /* Horizontally center content */
+    justify-content: center;
+
+    /* Vertically center content */
+    align-items: center;
+
+    /* Full viewport height */
+    height: 100vh;
+
+    /* Main font family */
+    font-family: Arial, sans-serif;
+
+    /* Prevent animation overflow */
+    overflow: hidden;
+
+    /* Animated gradient background */
+    background: linear-gradient(
+
+        /* Gradient angle */
+        -45deg,
+
+        /* Gradient colors */
+        var(--bg1),
+        var(--bg2),
+        var(--bg3),
+        var(--bg4)
+    );
+
+    /* Makes gradient huge so animation works */
+    background-size: 400% 400%;
+
+    /* Apply animated gradient */
+    animation: gradientBG 15s ease infinite;
+
+    /* Smooth transitions when theme changes */
+    transition:
+        background 0.5s ease,
+        color 0.5s ease;
+}
+
+
+/* =========================================
+   TOGGLE BUTTON
+========================================= */
+.toggle-btn {
+
+    /* Space below button */
+    margin-bottom: 30px;
+
+    /* Inner spacing */
+    padding: 12px 25px;
+
+    /* Remove default border */
+    border: none;
+
+    /* Rounded pill shape */
+    border-radius: 30px;
+
+    /* Pointer cursor on hover */
+    cursor: pointer;
+
+    /* Button font size */
+    font-size: 1rem;
+
+    /* Bold text */
+    font-weight: bold;
+
+    /* Glass effect background */
+    background: var(--glass-bg);
+
+    /* Dynamic text color */
+    color: var(--text-color);
+
+    /* Frosted glass blur */
+    backdrop-filter: blur(10px);
+
+    /* Soft glow shadow */
+    box-shadow:
+        0 0 10px rgba(122,162,247,0.3);
+
+    /* Smooth hover animation */
+    transition: all 0.3s ease;
+}
+
+
+/* =========================================
+   BUTTON HOVER EFFECT
+========================================= */
+.toggle-btn:hover {
+
+    /* Slightly enlarge button */
+    transform: scale(1.08);
+
+    /* Stronger glow */
+    box-shadow:
+        0 0 20px rgba(122,162,247,0.5);
+}
+
+
+/* =========================================
+   CLOCK CONTAINER
+========================================= */
+.clock-container {
+
+    /* Center text */
+    text-align: center;
+
+    /* Internal spacing */
+    padding: 40px 60px;
+
+    /* Rounded corners */
+    border-radius: 25px;
+
+    /* Glass background */
+    background: var(--glass-bg);
+
+    /* Blur background behind card */
+    backdrop-filter: blur(12px);
+
+    /* Multi-layer soft shadow */
+    box-shadow:
+
+        /* Small shadow */
+        0 0 20px rgba(122,162,247,0.15),
+
+        /* Medium shadow */
+        0 0 40px rgba(122,162,247,0.10),
+
+        /* Large shadow */
+        0 0 60px rgba(122,162,247,0.05);
+
+    /* Floating animation */
+    animation: float 5s ease-in-out infinite;
+
+    /* Smooth transitions */
+    transition:
+        background 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+/* =========================================
+   CLOCK TEXT
+========================================= */
+.clock {
+
+    /* Large digital text */
+    font-size: 5rem;
+
+    /* Dynamic text color */
+    color: var(--text-color);
+
+    /* Spacing between letters */
+    letter-spacing: 4px;
+
+    /* Soft layered glow */
+    text-shadow:
+
+        /* Tiny glow */
+        0 0 3px var(--glow-color),
+
+        /* Medium glow */
+        0 0 6px var(--glow-color),
+
+        /* Large soft glow */
+        0 0 12px rgba(122,162,247,0.5);
+
+    /* Calm breathing glow animation */
+    animation: breathe 4s ease-in-out infinite;
+
+    /* Smooth transitions */
+    transition:
+        color 0.5s ease,
+        text-shadow 0.5s ease;
+}
+
+
+/* =========================================
+   DATE TEXT
+========================================= */
+.date {
+
+    /* Space above date */
+    margin-top: 15px;
+
+    /* Smaller than clock */
+    font-size: 1.4rem;
+
+    /* Dynamic date color */
+    color: var(--date-color);
+
+    /* Letter spacing */
+    letter-spacing: 2px;
+
+    /* Slight transparency */
+    opacity: 0.9;
+
+    /* Smooth color transitions */
+    transition: color 0.5s ease;
+}
+
+
+/* =========================================
+   BACKGROUND ANIMATION
+========================================= */
+@keyframes gradientBG {
+
+    /* Animation start */
+    0% {
+
+        /* Gradient positioned left */
+        background-position: 0% 50%;
+    }
+
+    /* Middle of animation */
+    50% {
+
+        /* Shift gradient right */
+        background-position: 100% 50%;
+    }
+
+    /* End of animation */
+    100% {
+
+        /* Return to original position */
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================================
+   FLOATING ANIMATION
+========================================= */
+@keyframes float {
+
+    /* Starting point */
+    0% {
+
+        /* Normal position */
+        transform: translateY(0px);
+    }
+
+    /* Halfway point */
+    50% {
+
+        /* Move upward slightly */
+        transform: translateY(-10px);
+    }
+
+    /* Ending point */
+    100% {
+
+        /* Return to original position */
+        transform: translateY(0px);
+    }
+}
+
+
+/* =========================================
+   BREATHING GLOW ANIMATION
+========================================= */
+@keyframes breathe {
+
+    /* Initial state */
+    0% {
+
+        /* Slight transparency */
+        opacity: 0.85;
+
+        /* Softer glow */
+        text-shadow:
+            0 0 4px var(--glow-color),
+            0 0 8px rgba(122,162,247,0.3);
+    }
+
+    /* Strongest glow point */
+    50% {
+
+        /* Full visibility */
+        opacity: 1;
+
+        /* Larger glow */
+        text-shadow:
+            0 0 8px var(--glow-color),
+            0 0 16px rgba(122,162,247,0.5);
+    }
+
+    /* Return to softer state */
+    100% {
+
+        /* Slight transparency */
+        opacity: 0.85;
+
+        /* Softer glow again */
+        text-shadow:
+            0 0 4px var(--glow-color),
+            0 0 8px rgba(122,162,247,0.3);
+    }
+}
